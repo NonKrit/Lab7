@@ -17,7 +17,16 @@ class PaintWindow(QWidget):
         self.bColor = Qt.black
         self.Point = QPoint()
 
-    # paint event
+    def clear(self):
+        self.image.fill(Qt.white)
+        self.update()
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.draw = True
+            self.Point = event.pos()
+
+
     def paintEvent(self, event):
         paint = QPainter(self)
         paint.drawImage(self.rect(), self.image, self.image.rect())
