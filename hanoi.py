@@ -1,6 +1,6 @@
 from turtle import *
-from pole import Pole
-from disk import Disk
+from Pole import Pole
+from Disk import Disk
 
 
 class Hanoi(object):
