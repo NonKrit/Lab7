@@ -26,6 +26,19 @@ class PaintWindow(QWidget):
             self.draw = True
             self.Point = event.pos()
 
+    def mouseMoveEvent(self, event):
+        if (event.buttons() & Qt.LeftButton) & self.draw:
+            painter = QPainter(self.image)
+            painter.setPen(QPen(self.bColor, self.bSize,
+                                Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+            painter.drawLine(self.Point, event.pos())
+            self.Point = event.pos()
+            self.update()
+
+    def mouseReleaseEvent(self, event):
+
+        if event.button() == Qt.LeftButton:
+            self.draw = False
 
     def paintEvent(self, event):
         paint = QPainter(self)
